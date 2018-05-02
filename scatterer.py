@@ -15,6 +15,15 @@ for i in range(51):
     percents.append(round(per,3))
 #print percents
 import matplotlib.pyplot as plt
+#for p-values, going to want to look at scipy.stats (pltw used it for the other stuff)
+from scipy.stats import linregress#what pltw used, still need to look into it
+import numpy as np
 fig, ax=plt.subplots(1,1)
-ax.plot(list(range(51)), percents, 'ro')
+m,b,r,p,E=linregress(income,percents)#Yeah, not goint to be able to do this now
+ax.plot(income, percents, 'ro')
+xmin,xmax=ax.get_xlim()
+x=np.linspace(xmin,xmax)
+y=m*x+b
+ax.plot(x,y,'b-')
+print p
 fig.show()
