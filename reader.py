@@ -1,5 +1,27 @@
+'''
+Name:       Elijah Thorpe
+Course:     CSE
+Assignment: Data Modeling
+Purpose:    This parses all of the data files. do_it() returns two dictionaries of data that is used, in a really annoying format.
+            neaten_generation(data) takes in the power generation dictionary, groups it into categories, and makes it average per month, and then returns a dictionary
+              of {type:[average per month per state]}.
+            neaten_income(data) takes in the income dictionary, and puts it in the same order as the power generation lists, so that it is easier to use.
+            parse_data() uses the above three functions to return a dictionary from neaten_generation and the list from neaten_income, all in one function call.
+            gen_types(data) and states() were helper functions to write this, letting me look to see what the categories used were without having to read all of it manually.
+'''
 #reads the .csv files, returns lists
 import os.path
+#For the record, this is the order of everything:
+['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL',
+ 'IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ',
+ 'NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
+['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Indiana','Illinois','Indiana',
+    'Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire',
+    'New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont',
+    'Washington','Wisconsin','West Virginia','Wyoming']
+#Yes, it is alphabetical by state abreviation
+#List of power generation types (arbitrary order, they are dictionary keys so not ordered):
+['total', 'coal', 'geothermal', 'hydroelectric', 'gas', 'nuclear', 'petroleum', 'solar', 'wind', 'biomass', 'other']
 def do_it():
     '''Returns 2 dictionaries of the data read:
     Power generation:
@@ -167,9 +189,7 @@ def gen_types(data):
                     types.append(gent)
     types.sort()
     return types
-states_order=['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL',
- 'IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ',
- 'NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
+
 long_state_order=['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Indiana','Illinois','Indiana',
     'Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire',
     'New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont',
