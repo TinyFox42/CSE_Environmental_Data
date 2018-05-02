@@ -139,7 +139,7 @@ def neaten_generation(data):
         for mon in mons:
             here=data[state][mon].keys()'''
             
-        return vals
+    return vals
     
 def states():
     '''Just something helpful for making this, makes a list of the state abbreviations in alphabetical order'''
@@ -167,3 +167,22 @@ def gen_types(data):
                     types.append(gent)
     types.sort()
     return types
+states_order=['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL',
+ 'IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ',
+ 'NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
+long_state_order=['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Indiana','Illinois','Indiana',
+    'Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire',
+    'New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont',
+    'Washington','Wisconsin','West Virginia','Wyoming']#that was really painful to make, and would have been much easier if the abbreviations actually made sense
+def neaten_income(data):
+    '''Just puts the incomes in the same order as the power generation data'''
+    vals=[]
+    for state in long_state_order:
+        vals.append(data[state])
+    return vals
+def parse_data():
+    '''Just makes it easier to do everything, returns generation data and income data'''
+    gens, income=do_it()
+    gens=neaten_generation(gens)
+    income=neaten_income(income)
+    return gens, income
