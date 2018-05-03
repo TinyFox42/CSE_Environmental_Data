@@ -7,7 +7,7 @@ for i in range(51):
     total=0
     for gre in green_gens:
         total+=gens[gre][i]
-    greens.append(total/len(green_gens))
+    greens.append(total)
 #print greens
 percents=[]
 for i in range(51):
