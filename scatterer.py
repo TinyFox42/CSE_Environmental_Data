@@ -3,7 +3,11 @@ import reader
 gens, income=reader.parse_data()
 #This is the list of all the graphs to be made, [Name, [types]]
 groups=[['Green',['geothermal','hydroelectric','nuclear','solar','wind']],
-        ['Other',['other']]]
+        ['Other',['other']],
+        ['Fossil Fuel',['coal','gas','petroleum']]]
+for t in reader.pwrs[1:-1]:#All but 'total' and 'other'
+    name=t[0].upper()+t[1:]
+    groups.append([name,[t]])
 #green_gens=['geothermal','hydroelectric','nuclear','solar','wind']
 #greens=[]
 data=[]
@@ -28,11 +32,6 @@ import matplotlib.pyplot as plt
 #for p-values, going to want to look at scipy.stats (pltw used it for the other stuff)
 from scipy.stats import linregress#what pltw used, still need to look into it
 import numpy as np
-
-
-#print s,l,w
-
-
 
 for i,g in enumerate(groups):
     fig, ax=plt.subplots(1,1)

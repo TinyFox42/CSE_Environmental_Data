@@ -21,7 +21,7 @@ import os.path
     'Washington','Wisconsin','West Virginia','Wyoming']
 #Yes, it is alphabetical by state abreviation
 #List of power generation types (arbitrary order, they are dictionary keys so not ordered):
-['total', 'coal', 'geothermal', 'hydroelectric', 'gas', 'nuclear', 'petroleum', 'solar', 'wind', 'biomass', 'other']
+pwrs=['total', 'coal', 'geothermal', 'hydroelectric', 'gas', 'nuclear', 'petroleum', 'solar', 'wind', 'biomass', 'other']
 def do_it():
     '''Returns 2 dictionaries of the data read:
     Power generation:
