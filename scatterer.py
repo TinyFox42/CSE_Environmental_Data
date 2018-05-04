@@ -25,5 +25,14 @@ xmin,xmax=ax.get_xlim()
 x=np.linspace(xmin,xmax)
 y=m*x+b
 ax.plot(x,y,'b-')
-print p
+ax.set_title("Percent of green Energy vs. Average Income in State\n2016")
+ax.set_xlabel("Average income in State($)")
+ax.set_ylabel("Average Green Power Generation per Month (MW)")
+r2='$r^2$='+str(int(r**2*100))+'%'
+text=ax.text(0.5, 0.1, r2+"\np=%.2f"%p, transform=ax.transAxes)
+if p<0.05:
+    text.set_bbox(dict(boxstyle='round',facecolor='lime',alpha=0.6))
+else:
+    text.set_bbox(dict(boxstyle='round',facecolor='white',alpha=0.6))
+#print p
 fig.show()
