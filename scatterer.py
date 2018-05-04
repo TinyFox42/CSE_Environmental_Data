@@ -17,7 +17,7 @@ gens, income=reader.parse_data()
 #This is the list of all the graphs to be made, [Name, [types]]
 '''These make the titles and types for the scatter plots, and then just makes ones for individual types'''
 groups=[['Green',['geothermal','hydroelectric','nuclear','solar','wind']],
-        ['Other',['other']],
+        ['Other',['other']],#note that other is not actually used in the presentation, because it doesn't make that much sense to be there
         ['Fossil Fuel',['coal','gas','petroleum']]]
 for t in reader.pwrs[1:-1]:#All but 'total' and 'other'
     name=t[0].upper()+t[1:]

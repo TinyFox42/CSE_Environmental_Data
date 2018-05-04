@@ -7,11 +7,12 @@ Purpose:    This parses all of the data files.
                 ({'Wind':[int(megawatthours of wind in Alaska),etc.],etc.},
                 [int(average income in Alaska),etc.])
             do_it() returns two dictionaries of data that is used, in a really annoying format.
-            neaten_generation(data) takes in the power generation dictionary, groups it into categories, and makes it average per month, and then returns a dictionary
-              of {type:[average per month per state]}.
+            neaten_generation(data) takes in the power generation dictionary, groups it into categories, and makes it average per month, 
+              and then returns a dictionary of {type:[average per month per state]}.
             neaten_income(data) takes in the income dictionary, and puts it in the same order as the power generation lists, so that it is easier to use.
             parse_data() uses the above three functions to return a dictionary from neaten_generation and the list from neaten_income, all in one function call.
-            gen_types(data) and states() were helper functions to write this, letting me look to see what the categories used were without having to read all of it manually.
+            gen_types(data) and states() were helper functions to write this, letting me look to see what the categories used were without having to read all of 
+             it manually.
 '''
 #reads the .csv files, returns lists
 import os.path
@@ -19,10 +20,10 @@ import os.path
 ['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','ID','IL',
  'IN','KS','KY','LA','MA','MD','ME','MI','MN','MO','MS','MT','NC','ND','NE','NH','NJ',
  'NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']
-['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Idaho','Illinois','Indiana',
-    'Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire',
-    'New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont',
-    'Washington','Wisconsin','West Virginia','Wyoming']
+['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Idaho',
+    'Illinois','Indiana','Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana',
+    'North Carolina', 'North Dakota','Nebraska','New Hampshire','New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania',
+    'Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont','Washington','Wisconsin','West Virginia','Wyoming']
 #Yes, it is alphabetical by state abreviation
 #List of power generation types (arbitrary order, they are dictionary keys so not ordered):
 pwrs=['total', 'coal', 'geothermal', 'hydroelectric', 'gas', 'nuclear', 'petroleum', 'solar', 'wind', 'biomass', 'other']
@@ -108,8 +109,8 @@ states_order=['AK','AL','AR','AZ','CA','CO','CT','DC','DE','FL','GA','HI','IA','
  'NM','NV','NY','OH','OK','OR','PA','RI','SC','SD','TN','TX','UT','VA','VT','WA','WI','WV','WY']#generated using states(), then edited a bit
 gents=['total', 'coal', 'geothermal', 'hydroelectric', 'gas', 'nuclear', 'petroleum', 'solar', 'wind', 'biomass', 'other']
 gen_synonyms={'total':['Total'], 'coal':['Coal'], 'geothermal':['Geothermal'],'hydroelectric':['Hydroelectric Conventional'],'gas':['Natural Gas','Other Gases'],
-    'nuclear':['Nuclear'],'petroleum':['Petroleum'],'solar':['Solar Thermal and Photovoltaic'],'wind':['Wind'],'biomass':['Wood and Wood Derived Fuels','Other Biomass'],
-    'other':['Other','Pumped Storage']}#made from gen_types, then trimmed a bit
+    'nuclear':['Nuclear'],'petroleum':['Petroleum'],'solar':['Solar Thermal and Photovoltaic'],'wind':['Wind'],
+    'biomass':['Wood and Wood Derived Fuels','Other Biomass'],'other':['Other','Pumped Storage']}#made from gen_types, then trimmed a bit
 def neaten_generation(data):
     '''Makes it so that the power generation data is more readable.
     Data in this case will be the gen_data returned in do_it().
@@ -194,10 +195,11 @@ def gen_types(data):
     types.sort()
     return types
 
-long_state_order=['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii','Iowa','Idaho','Illinois','Indiana',
-    'Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi','Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire',
-    'New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania','Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont',
-    'Washington','Wisconsin','West Virginia','Wyoming']#that was really painful to make, and would have been much easier if the abbreviations actually made sense
+long_state_order=['Alaska','Alabama','Arkansas','Arizona','California','Colorado','Connecticut','District of Columbia','Delaware','Florida','Georgia','Hawaii',
+    'Iowa','Idaho','Illinois','Indiana','Kansas','Kentucky','Louisiana','Massachusetts','Maryland','Maine','Michigan','Minnesota','Missouri','Mississippi',
+    'Montana','North Carolina', 'North Dakota','Nebraska','New Hampshire','New Jersey','New Mexico','Nevada','New York','Ohio','Oklahoma','Oregon','Pennsylvania',
+    'Rhode Island','South Carolina','South Dakota','Tennessee','Texas','Utah','Virginia','Vermont','Washington','Wisconsin','West Virginia','Wyoming']
+    #that was really painful to make, and would have been much easier if the abbreviations actually made sense
 def neaten_income(data):
     '''Just puts the incomes in the same order as the power generation data'''
     vals=[]
