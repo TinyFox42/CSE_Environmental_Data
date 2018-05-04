@@ -2,7 +2,11 @@
 Name:       Elijah Thorpe
 Course:     CSE
 Assignment: Data Modeling
-Purpose:    This parses all of the data files. do_it() returns two dictionaries of data that is used, in a really annoying format.
+Purpose:    This parses all of the data files.
+            parse_data() is what you want to do, returning:
+                ({'Wind':[int(megawatthours of wind in Alaska),etc.],etc.},
+                [int(average income in Alaska),etc.])
+            do_it() returns two dictionaries of data that is used, in a really annoying format.
             neaten_generation(data) takes in the power generation dictionary, groups it into categories, and makes it average per month, and then returns a dictionary
               of {type:[average per month per state]}.
             neaten_income(data) takes in the income dictionary, and puts it in the same order as the power generation lists, so that it is easier to use.
@@ -201,7 +205,10 @@ def neaten_income(data):
         vals.append(data[state])
     return vals
 def parse_data():
-    '''Just makes it easier to do everything, returns generation data and income data'''
+    '''Just makes it easier to do everything, returns generation data and income data
+    Returns 2 values (as a tuple, technically):
+        {'Type1':[int(power for state 1),int(power state 2)],'Type2':[you get the idea]}
+        [int(average income state 1), int(average income state 2)]'''
     gens, income=do_it()
     gens=neaten_generation(gens)
     income=neaten_income(income)
